@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Bump version and create changelog
+        uses: undergroundwires/bump-everywhere@master
+        with:
+          user: 'KeepW0rk'
+          git-token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: 'release'
